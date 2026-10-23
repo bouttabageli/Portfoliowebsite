@@ -487,6 +487,7 @@ nav .right a span {
 }
 
 @media (max-width: 600px) {
+
     /* NAVBAR */
     nav{
         padding: 0 20px;

@@ -48,15 +48,15 @@ window.onload = function()
     for(let i = 0; i < 4; i++)
     {
         let jiggyImg = new Image();
-        jiggyImg.src = `./img/flappyjiggy${i}.png`;
+        jiggyImg.src = `./img/flappyjiggy${i}.webp`;
         jiggyImgs.push(jiggyImg);
     }
 
     topPipeImg = new Image();
-    topPipeImg.src = "./img/toppipe.png";
+    topPipeImg.src = "./img/toppipe.webp";
 
     bottomPipeImg = new Image();
-    bottomPipeImg.src = "./img/bottompipe.png";
+    bottomPipeImg.src = "./img/bottompipe.webp";
     
     requestAnimationFrame(update);
     setInterval(placePipes, 1800);
