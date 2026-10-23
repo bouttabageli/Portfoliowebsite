@@ -1,0 +1,38 @@
+html, body 
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#board {
+    max-width: 100vw;
+    max-height: 100vh;
+    aspect-ratio: 360 / 640;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background-image: url("./img/flappybirdbg.png");
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Elijah Hart">
+  <title>Arcade Catalog</title>
+  
+  <link rel="icon" href="images/codeicon.webp" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Floating Toggle -->
+  <button id="menu-toggle" aria-label="Open Navigation Directory">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <!-- Persistent Sidebar Drawer -->
+  <dialog id="sidebar-dialog">
+    <div class="sidebar-header">
+      <h3>Site Directory</h3>
+      <button id="menu-close" aria-label="Close Navigation Directory">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gamecatalog.html">Games</a></li>
+      </ul>
+    </nav>
+  </dialog>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="left">
+      <a href="/">Elijah Hart</a>
+    </div>
+    <div class="right">
+      <a href="http://github.com/bouttabageli" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i>
+        <span>Github</span>
+      </a>
+      <a href="http://linkedin.com/in/elijah-hart-979995231/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="mailto:ehart3469@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </nav>
+
+    <main class="catalog-main">
+        <section class="catalog-header">
+            <h2>Web Arcade</h2>
+            <p>Playable prototypes and projects running directly in the browser.</p>
+        </section>
+
+        <!-- Container populated by JS -->
+        <div class="games-grid" id="games-grid"></div>
+    </main>
+
+    <script src="js/games-catalog.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grid = document.getElementById("games-grid");
+
+            Object.entries(GAMES_CATALOG).forEach(([key, game]) => {
+            const card = document.createElement("div");
+            card.className = "game-card";
+            card.innerHTML = `
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+                <a href="play.html?game=${key}" class="play-btn">Play Now</a>
+            `;
+            grid.appendChild(card);
+            });
+        });
+    </script>
+
+</body>
+</html>

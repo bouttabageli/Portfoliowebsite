@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Elijah Hart">
+  <title>Arcade Player - Elijah Hart</title>
+  
+  <link rel="icon" href="images/codeicon.webp" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Floating Toggle Button -->
+  <button id="menu-toggle" aria-label="Open Navigation Directory">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <!-- Persistent Sidebar Drawer -->
+  <dialog id="sidebar-dialog">
+    <div class="sidebar-header">
+      <h3>Site Directory</h3>
+      <button id="menu-close" aria-label="Close Navigation Directory">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gamecatalog.html">Games</a></li>
+      </ul>
+    </nav>
+  </dialog>
+
+  <!-- Top Navbar -->
+  <nav>
+    <div class="left">
+      <a href="/">Elijah Hart</a>
+    </div>
+    <div class="right">
+      <a href="http://github.com/bouttabageli" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-github"></i>
+        <span>Github</span>
+      </a>
+      <a href="http://linkedin.com/in/elijah-hart-979995231/" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a href="mailto:ehart3469@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Game Container -->
+  <main class="player-main">
+    <div class="player-wrapper">
+      <div class="player-topbar">
+        <a href="gamecatalog.html" class="back-link">← Back to Arcade</a>
+      </div>
+
+      <div class="player-meta">
+        <h2 id="game-title">Loading...</h2>
+        <p id="game-desc"></p>
+      </div>
+
+      <!-- Sized dynamically to match the game's native CSS -->
+      <div class="game-frame-container" id="frame-container">
+        <iframe 
+          id="game-frame" 
+          src="" 
+          allow="gamepad; autoplay" 
+          loading="eager"
+          scrolling="no">
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/games-catalog.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const gameKey = params.get("game");
+      const game = GAMES_CATALOG[gameKey];
+
+      const titleEl = document.getElementById("game-title");
+      const descEl = document.getElementById("game-desc");
+      const frameEl = document.getElementById("game-frame");
+      const containerEl = document.getElementById("frame-container");
+      const fsBtn = document.getElementById("fullscreen-btn");
+
+      if (game) {
+        document.title = `${game.title} | Elijah Hart Arcade`;
+        titleEl.textContent = game.title;
+        descEl.textContent = game.description;
+        frameEl.src = game.src;
+
+        // Apply game dimensions from the catalog
+        if (game.aspectRatio) containerEl.style.aspectRatio = game.aspectRatio;
+        if (game.maxWidth) containerEl.style.maxWidth = game.maxWidth;
+
+        // Automatically focus the iframe so arrow keys control the game immediately
+        frameEl.addEventListener("load", () => {
+          frameEl.focus();
+        });
+        // Inside play.html script block
+        window.addEventListener("keydown", (e) => {
+            // If the game frame is currently focused or active
+            if (document.activeElement === document.getElementById("game-frame")) {
+                if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(e.code)) {
+                    e.preventDefault();
+                }
+            }
+        });
+      } else {
+        titleEl.textContent = "Game Not Found";
+        descEl.textContent = "Please select a game from the arcade catalog.";
+        frameEl.style.display = "none";
+        fsBtn.style.display = "none";
+      }
+
+    });
+  </script>
+
+</body>
+</html>

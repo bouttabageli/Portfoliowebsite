@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Elijah Hart">
+    <meta name="description" content="This page presents a portfolio overview for Elijah Hart">
+    <link rel="icon" href="images/codeicon.webp" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <!-- Trigger Button -->
+    <button id="menu-toggle" aria-label="Open Navigation Directory">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Slide-out Drawer Dialog -->
+    <dialog id="sidebar-dialog">
+        <div class="sidebar-header">
+            <h3>Site Directory</h3>
+            <button id="menu-close" aria-label="Close Navigation Directory">✕</button>
+        </div>
+        <!-- Navigation directory list -->
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/gamecatalog.html">Games</a></li>
+            </ul>
+        </nav>
+    </dialog>
+    
+    <!-- NAVBAR from UnderCtrl on Youtube-->
+    <nav>
+        <div class="left">
+            <a href="/">Elijah Hart</a>
+        </div>
+        <div class="right">
+            <a href="http://github.com/bouttabageli" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>Github</span>
+            </a>
+            <a href="http://linkedin.com/in/elijah-hart-979995231/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            <a href="mailto:ehart3469@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+    <!-- HERO SECTION from UnderCtrl on Youtube-->
+     <section class="hero-section">
+        <div class="text">
+            <h2>Hi, I'm Elijah &#x1f60e</h2>
+            <p>Software Engineer with a B.S. in Computer Science (Concentration in Game Design) and experience in full-stack development. Proficient across multiple systems and languages, with a focus on building optimized, high-performance applications.</p>
+
+            <div class="links">
+                <a href="#skills">
+                    <i class="fa-solid fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#testimony">
+                    <i class="fa-solid fa-feather"></i>
+                    <span>Testimony</span>
+                </a>
+                <a href="#contact">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </div>
+        <div class="headshot">
+            <img src="images/headshotre.webp" alt="photo of me">
+        </div>
+
+     </section>
+
+     <!-- SKILLS SECTION from UnderCtrl on Youtube-->
+     <section id="skills" class="skills-section">
+        <h2>Skills</h2>
+        <div class="text">
+            Trained in multiple levels and types of software. Capable of building solutions for whatever application a client may need.
+        </div>
+        <div class="cells">
+            <div class="cell">
+                <img src="images/html5logore.webp" alt="html">
+                <span>HTML</span>
+            </div>
+            
+            <div class="cell">
+                <img src="images/javascriptlogore.webp" alt="javascript">
+                <span>JavaScript</span>
+            </div>
+            
+            <div class="cell">
+                <img src="images/pylogore.webp" alt="python">
+                <span>Python</span>
+            </div>
+            
+            <div class="cell">
+                <img src="images/cpplogore.webp" alt="Cplusplus">
+                <span>C++</span>
+            </div>
+            
+            <div class="cell">
+                <i class="fa-brands fa-unreal-engine"></i>
+                <span>Unreal</span>
+            </div>
+        </div>
+     </section>
+
+     <!-- TESTIMONY SECTION from UnderCtrl on Youtube-->
+     <section id="testimony" class="testimony-section">
+        <h2>Testimony</h2>
+
+        <div class="group">
+            <div class="person-details">
+                <img src="images/jakarre.webp">
+                <p>Jacob Inaldo</p>
+                <p>Independent Filmmaker</p>
+            </div>
+            <div class="text">
+                "I've known Elijah for years and he's always been a great help with anything technical I needed done. When I needed a website at first I paid for Squarespace's website builder and was having issues with responsiveness between mobile and desktop devices, and Elijah was able to personally build a new website that solved those issues and helped me save a lot of money."
+            </div>
+        </div>
+     </section>
+
+     <!-- CONTACT SECTION from UnderCtrl on Youtube-->
+     <section id="contact" class="contact-section">
+        <h2>Contact</h2>
+
+        <div class="group">
+            <div class="text">I'm always looking to connect with fellow professionals at all levels. Whether you are a fellow engineer wishing to discuss coding practices or a prospective client looking to bring on talent, leave me a message and I'll get back to you as soon as I can! </div>
+
+            <form action="https://formspree.io/f/mzeepqkp" method="POST">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" cols="30" rows="10" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        
+     </section>
+
+    </main>
+
+</body>
+</html>
