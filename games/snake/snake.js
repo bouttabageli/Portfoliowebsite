@@ -53,7 +53,7 @@ window.onload = function() {
     board.addEventListener("mousedown", handleCanvasClick);
     board.addEventListener("touchstart", handleTouchStart, {passive: false});
     board.addEventListener("touchend", handleTouchEnd, {passive: false});
-    setInterval(update, 1000/10);
+    setInterval(update, 1000/6);
 }
 
 function startGame() 
