@@ -5,8 +5,8 @@ let boardHeight = 640;
 let context;
 
 //jiggy
-let jiggyWidth = 68;
-let jiggyHeight = 64;
+let jiggyWidth = 78;
+let jiggyHeight = 74;
 let jiggyX = boardWidth/8;
 let jiggyY = boardHeight/2;
 let jiggyImgs = [];
@@ -17,7 +17,11 @@ let jiggy =
     x: jiggyX,
     y: jiggyY,
     width: jiggyWidth,
-    height: jiggyHeight
+    height: jiggyHeight,
+    hitboxWidth: 40,
+    hitboxHeight: 25,
+    offsetX: 18,
+    offsetY: 30
 }
 
 //pipes
@@ -86,6 +90,17 @@ function update()
     velocityY += gravity;
     jiggy.y = Math.max(jiggy.y + velocityY, 0); //apply gravity to jiggy but don't let him go past the top of canvas
     context.drawImage(jiggyImgs[jiggyImgsIndex], jiggy.x, jiggy.y, jiggy.width, jiggy.height);
+
+    
+    //hitbux debug
+    //context.strokeStyle = "red";
+    //context.lineWidth = 1;
+    //context.strokeRect(
+    //    jiggy.x + jiggy.offsetX,
+    //    jiggy.y + jiggy.offsetY,
+    //    jiggy.hitboxWidth,
+    //    jiggy.hitboxHeight
+    //);
 
     if(jiggy.y > board.height)
     {
@@ -182,10 +197,24 @@ function flap()
 
 function detectCollision(a, b)
 {
-    return a.x < b.x + b.width // a's top left corner doesn't reach b's top right corner
-        && a.x + a.width > b.x // a's top right corner passes b's top left corner
-        && a.y < b.y + b.height // a's top left corner doesn't reach b's bottom right corner
-        && a.y + a.height > b.y; // a's bottom left corner passes b's top left corner
+    let aBox = {
+        x: a.hitboxWidth ? a.x + a.offsetX : a.x,
+        y: a.hitboxHeight ? a.y + a.offsetY : a.y,
+        width: a.hitboxWidth || a.width,
+        height: a.hitboxHeight || a.height
+    };
+
+    let bBox = {
+        x: b.hitboxWidth ? b.x + b.offsetX : b.x,
+        y: b.hitboxHeight ? b.y + b.offsetY : b.y,
+        width: b.hitboxWidth || b.width,
+        height: b.hitboxHeight || b.height
+    };
+    
+    return aBox.x < bBox.x + bBox.width // a's top left corner doesn't reach b's top right corner
+        && aBox.x + aBox.width > bBox.x // a's top right corner passes b's top left corner
+        && aBox.y < bBox.y + bBox.height // a's top left corner doesn't reach b's bottom right corner
+        && aBox.y + aBox.height > bBox.y; // a's bottom left corner passes b's top left corner
 }
 
 function animateJiggy()
