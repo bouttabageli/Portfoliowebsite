@@ -360,9 +360,9 @@ function draw() {
     const twoThirdsY = Math.floor((canvas.height * 2) / 3);
     if (gameState === "PLAYING") {
         ctx.save();
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.25)";
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.5)";
         ctx.setLineDash([6, 6]);
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 6;
 
         // Horizontal split (upper 2/3 vs bottom 1/3)
         ctx.beginPath();
@@ -380,7 +380,7 @@ function draw() {
 
         // Zone Watermark Labels
         function drawZoneBadge(text, centerX, centerY) {
-            ctx.font = "bold 11px 'Poppins', sans-serif";
+            ctx.font = "bold 8px 'Poppins', sans-serif";
             const textMetrics = ctx.measureText(text);
             const paddingX = 10;
             const paddingY = 5;
@@ -412,9 +412,9 @@ function draw() {
         }
 
         // Render the 3 zone badges
-        drawZoneBadge("LEFT HOOK (A)", canvas.width / 4, twoThirdsY - 20);
-        drawZoneBadge("RIGHT JAB (D)", (canvas.width * 3) / 4, twoThirdsY - 20);
-        drawZoneBadge("HOLD TO BLOCK (W)", canvas.width / 2, canvas.height - 24);
+        drawZoneBadge("TAP HERE OR (A) TO PUNCH", (canvas.width / 4) - 20, twoThirdsY - 20);
+        drawZoneBadge("TAP HERE OR (D) TO PUNCH", ((canvas.width * 3) / 4 ) + 20, twoThirdsY - 20);
+        drawZoneBadge("HOLD TO BLOCK (W)", canvas.width / 2, canvas.height - 60);
 
         ctx.restore();
     }
@@ -738,9 +738,9 @@ function drawOverlay() {
 
         ctx.fillStyle = "#ffffff";
         ctx.font = "13px 'Poppins', sans-serif";
-        ctx.fillText("• Left Hook: Tap Top-Left or press [A]", canvas.width / 2, 368);
-        ctx.fillText("• Right Jab: Tap Top-Right or press [D]", canvas.width / 2, 392);
-        ctx.fillText("• Block: Hold Bottom 1/3 or hold [W]", canvas.width / 2, 416);
+        ctx.fillText("• Left Hook: Tap the Top Left of the Screen or press [A]", canvas.width / 2, 368);
+        ctx.fillText("• Right Jab: Tap the Top-Right of the Screen or press [D]", canvas.width / 2, 392);
+        ctx.fillText("• Block: Hold Bottom of the Screen or hold [W]", canvas.width / 2, 416);
 
         ctx.fillStyle = "#22c55e";
         ctx.font = "bold 18px 'Poppins', sans-serif";
