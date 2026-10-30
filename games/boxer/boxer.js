@@ -380,7 +380,7 @@ function draw() {
 
         // Zone Watermark Labels
         function drawZoneBadge(text, centerX, centerY) {
-            ctx.font = "bold 8px 'Poppins', sans-serif";
+            ctx.font = "bold 9px 'Poppins', sans-serif";
             const textMetrics = ctx.measureText(text);
             const paddingX = 10;
             const paddingY = 5;
