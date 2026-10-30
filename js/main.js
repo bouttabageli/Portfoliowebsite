@@ -25,7 +25,7 @@ const dotsContainer = document.getElementById("carousel-dots");
 
 if(track && typeof GAMES_CATALOG !== "undefined")
 {
-  const gameEntries = Object.entries(GAMES_CATALOG).slice(0, 3);
+  const gameEntries = Object.entries(GAMES_CATALOG).slice(1, 4);
   let currentIndex = 0;
 
   //render first 3 games and link to games page

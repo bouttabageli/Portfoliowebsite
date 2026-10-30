@@ -22,5 +22,13 @@ const GAMES_CATALOG = {
     src: "games/treat-catcher/treatcatcher.html",
     aspectRatio: "16 / 9",
     maxWidth: "960px"
+  },
+  "Boxer": {
+    title: "Boxer",
+    genre: "Action / Arcade",
+    description: "Go up against skilled opponents and become the boxing champion!",
+    src:"games/boxer/boxer.html",
+    aspectRatio: "360 / 640",
+    maxWidth: "400px"
   }
 };
